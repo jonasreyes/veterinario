@@ -52,7 +52,7 @@ class TreatmentsRelationManager extends RelationManager
                 ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                 ->label('Creado')
-                ->dateTime(format: 'd/m/Y')
+                ->dateTime('d-m-Y h:i A')
                 ->sortable(),
             ])
             ->filters([

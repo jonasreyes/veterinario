@@ -24,10 +24,12 @@ class PatientResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                ->label('Nombre')
                 ->required()
                 ->maxLength(255),
 
                 Forms\Components\Select::make('type')
+                ->label('Tipo de mascota')
                 ->options([
                     'gato' => 'Gato',
                     'perro' => 'Perro',
@@ -35,10 +37,12 @@ class PatientResource extends Resource
                 ])->required(),
 
                 Forms\Components\DatePicker::make('date_of_birth')
+                ->label('Fecha de nacimiento')
                 ->required()
                 ->maxDate(now()),
 
                 Forms\Components\Select::make('owner_id')
+                ->label('Propietario')
                 ->relationship('owner', 'name')
                 ->searchable()
                 ->preload()

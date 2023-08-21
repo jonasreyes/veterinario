@@ -52,17 +52,27 @@ class TreatmentsRelationManager extends RelationManager
                 ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                 ->label('Creado')
-                ->dateTime(format: 'd/m/Y'),
+                ->dateTime(format: 'd/m/Y')
+                ->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('type')
+                ->options([
+                    'gato' => 'Gato',
+                    'perro' => 'Perro',
+                    'conejo' => 'Conejo',
+                ]),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                ->label('Nuevo tratamiento'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                ->label('Editar'),
+                Tables\Actions\DeleteAction::make()
+                ->label('Eliminar'),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

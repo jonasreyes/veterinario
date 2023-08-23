@@ -8,6 +8,7 @@
 </p>
 
 ## Sobre Veterinario
+### Versión 0.001 ;-)
 
-Es una aplicación sencilla para la gestión de la iformación de Mascotas y Propietarios que acuden a consultas veterinarias.
+Es una aplicación para la gestión básica de la información de Mascotas y Propietarios que acuden a consultas veterinarias.
 

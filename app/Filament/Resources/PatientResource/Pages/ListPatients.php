@@ -10,10 +10,15 @@ class ListPatients extends ListRecords
 {
     protected static string $resource = PatientResource::class;
 
+    protected ?string $heading = 'Pacientes';
+
+    protected ?string $subheading = 'Listado General';
+
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+            ->label('Crear Paciente')
         ];
     }
 }

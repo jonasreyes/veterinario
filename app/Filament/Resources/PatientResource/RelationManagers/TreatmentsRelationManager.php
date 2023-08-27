@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\PatientResource\RelationManagers;
 
+use App\Models\Patient;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -41,6 +43,7 @@ class TreatmentsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->heading('Historial de Tratamientos')
             ->recordTitleAttribute('description')
             ->columns([
                 Tables\Columns\TextColumn::make('description')
@@ -68,6 +71,8 @@ class TreatmentsRelationManager extends RelationManager
                 ->label('Nuevo tratamiento'),
             ])
             ->actions([
+                ViewAction::make()
+                ->label('Ver'),
                 Tables\Actions\EditAction::make()
                 ->label('Editar'),
                 Tables\Actions\DeleteAction::make()

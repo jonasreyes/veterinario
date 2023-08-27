@@ -10,11 +10,15 @@ class EditPatient extends EditRecord
 {
     protected static string $resource = PatientResource::class;
 
+    protected ?string $heading = 'Editar Paciente';
+
+    protected ?string $subheading = 'Servicio Veterinario';
+
     protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make()
-            ->label('Eliminar'),
+            ->label('Eliminar Paciente'),
         ];
     }
 }

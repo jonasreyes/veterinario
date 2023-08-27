@@ -6,9 +6,11 @@ use App\Filament\Resources\PatientResource\Pages;
 use App\Filament\Resources\PatientResource\RelationManagers;
 use App\Models\Patient;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -17,7 +19,11 @@ class PatientResource extends Resource
 {
     protected static ?string $model = Patient::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
+
+    protected static ?string $navigationLabel = 'Pacientes';
+
+    protected static ?string $pageLabel = 'Pacientes';
 
     public static function form(Form $form): Form
     {
@@ -48,6 +54,7 @@ class PatientResource extends Resource
                 ->preload()
                 ->createOptionForm([
                     Forms\Components\TextInput::make('name')
+                    ->label('Nombre del Propietario a Crear')
                     ->required()
                     ->maxLength(255),
 
@@ -61,9 +68,8 @@ class PatientResource extends Resource
                     ->label('Nro. Teléfono')
                     ->tel()
                     ->required(),
-
                 ])
-                ->required(),
+                    ->required(),
             ]);
     }
 
@@ -96,6 +102,7 @@ class PatientResource extends Resource
                 ]),
             ])
             ->actions([
+                ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -124,4 +131,5 @@ class PatientResource extends Resource
             'edit' => Pages\EditPatient::route('/{record}/edit'),
         ];
     }
+
 }
